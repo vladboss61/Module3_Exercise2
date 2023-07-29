@@ -11,6 +11,7 @@ namespace Module3_Exercise2;
 public sealed class Contact
 {
     public string Name { get; set; }
+
     public string PhoneNumber { get; set; }
 }
 
@@ -50,7 +51,9 @@ public sealed class ContactCollection
     public List<Contact> GetContacts(CultureInfo cultureInfo)
     {
         if (!_contactsByCulture.ContainsKey(cultureInfo))
+        {
             return new List<Contact>();
+        }
 
         var contacts = _contactsByCulture[cultureInfo]
             .SelectMany(kv => kv.Value)
